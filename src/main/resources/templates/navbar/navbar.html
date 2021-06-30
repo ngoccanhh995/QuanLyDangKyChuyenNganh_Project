@@ -1,0 +1,66 @@
+<ul th:fragment="navbar" class="navbar-nav bg-gray-900 sidebar sidebar-dark accordion" id="accordionSidebar">
+
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/home">
+        <div class="sidebar-brand-text mx-3">Trang chủ</div>
+    </a>
+    <hr class="sidebar-divider my-0">
+    <hr class="sidebar-divider">
+    <div class="sidebar-heading">
+        Tài khoản
+    </div>
+    <li class="nav-item" th:if="${authTaiKhoan.admin} == 'SINHVIEN'">
+        <a class="nav-link collapsed" href="/thongtincanhan" aria-expanded="true" aria-controls="collapseTwo">
+            <i class="fas fa-fw fa-cog"></i>
+            <span>Thông tin cá nhân</span>
+        </a>
+    </li>
+    <li class="nav-item" th:if="${authTaiKhoan.admin} == 'ADMIN'">
+        <a class="nav-link collapsed" href="/capquyenadmin" aria-expanded="true" aria-controls="collapseTwo">
+            <i class="fas fa-fw fa-cog"></i>
+            <span>Cấp quyền admin</span>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="/doimatkhau" aria-expanded="true" aria-controls="collapseTwo">
+            <i class="fas fa-fw fa-cog"></i>
+            <span>Đổi mật khẩu</span>
+        </a>
+    </li>
+    <li class="nav-item" th:if="${authTaiKhoan.admin} == 'ADMIN'">
+        <a class="nav-link collapsed" href="/taikhoan" aria-expanded="true">
+            <i class="fas fa-fw fa-wrench"></i>
+            <span>Quản lý tài khoản</span>
+        </a>
+    </li>
+    <hr class="sidebar-divider">
+    <div class="sidebar-heading">
+        Đăng kí
+    </div>
+    <li class="nav-item" th:if="${authTaiKhoan.admin} == 'SINHVIEN'">
+        <a class="nav-link" href="/dangkichuyennganh" >
+            <i class="fas fa-fw fa-folder"></i>
+            <span>Đăng kí chuyên ngành</span>
+        </a>
+    </li>
+    <li class="nav-item" th:if="${authTaiKhoan.admin} == 'ADMIN'">
+        <a class="nav-link" href="/chuyennganh" >
+            <i class="fas fa-fw fa-folder"></i>
+            <span>Quản lý thông tin chuyên ngành</span>
+        </a>
+    </li>
+    <li class="nav-item" th:if="${authTaiKhoan.admin} == 'ADMIN'">
+        <a class="nav-link" href="/thoigiandangki">
+            <i class="fas fa-fw fa-chart-area"></i>
+            <span>Quản lý thời gian đăng kí</span></a>
+    </li>
+    <li class="nav-item" th:if="${authTaiKhoan.admin} == 'ADMIN'">
+        <a class="nav-link" href="/thongtindangkiadmin">
+            <i class="fas fa-fw fa-table"></i>
+            <span>Thông tin đăng kí</span></a>
+    </li>
+    <hr class="sidebar-divider d-none d-md-block" style="margin-top: 95%;">
+    <div class="text-center d-none d-md-inline">
+        <button class="rounded-circle border-0" id="sidebarToggle"></button>
+    </div>
+
+</ul>

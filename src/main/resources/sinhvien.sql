@@ -1,0 +1,12 @@
+INSERT INTO database_qlcn.sinhvien (masv, malop, matk, ngaysinh, nienkhoa, tensv) VALUES (1, 1, 2, null, null, 'Huy 02');
+INSERT INTO database_qlcn.sinhvien (masv, malop, matk, ngaysinh, nienkhoa, tensv) VALUES (2, 1, 3, null, null, 'Huy 03');
+INSERT INTO database_qlcn.sinhvien (masv, malop, matk, ngaysinh, nienkhoa, tensv) VALUES (3, 1, 4, null, null, 'Huy 04');
+INSERT INTO database_qlcn.sinhvien (masv, malop, matk, ngaysinh, nienkhoa, tensv) VALUES (4, 1, 5, null, null, 'Huy 05');
+INSERT INTO database_qlcn.sinhvien (masv, malop, matk, ngaysinh, nienkhoa, tensv) VALUES (5, 1, 6, null, null, 'Huy 06');
+INSERT INTO database_qlcn.sinhvien (masv, malop, matk, ngaysinh, nienkhoa, tensv) VALUES (6, 2, 7, null, null, 'Huy 07');
+INSERT INTO database_qlcn.sinhvien (masv, malop, matk, ngaysinh, nienkhoa, tensv) VALUES (7, 2, 8, null, null, 'Huy 08');
+INSERT INTO database_qlcn.sinhvien (masv, malop, matk, ngaysinh, nienkhoa, tensv) VALUES (8, 2, 9, null, null, 'Huy 09');
+INSERT INTO database_qlcn.sinhvien (masv, malop, matk, ngaysinh, nienkhoa, tensv) VALUES (9, 3, 10, null, null, 'Huy 10');
+INSERT INTO database_qlcn.sinhvien (masv, malop, matk, ngaysinh, nienkhoa, tensv) VALUES (10, 3, 11, null, null, 'Chuyên nhành');
+INSERT INTO database_qlcn.sinhvien (masv, malop, matk, ngaysinh, nienkhoa, tensv) VALUES (11, 3, 12, null, null, 'Huy 12');
+INSERT INTO database_qlcn.sinhvien (masv, malop, matk, ngaysinh, nienkhoa, tensv) VALUES (12, 3, 13, null, null, 'Huy 13');

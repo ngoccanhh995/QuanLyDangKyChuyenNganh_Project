@@ -1,0 +1,78 @@
+<div th:fragment="content_pages_thoigiandangki" th:if="${url} == 'thoigiandangki'" class="container-fluid">
+    <style>
+        .invalid-taikhoan {
+            color: #bd2130;
+            margin-right: 15px;
+            display: none;
+        }
+    </style>
+    <div class="row">
+        <div class="content">
+            <div class="form-group text-center font-weight-bold text-uppercase h4">Thời gian đăng ký</div>
+            <div class="form-group">
+                <div style="float: left; width: 40%; margin: 10px;">
+                    <label>Ngày bắt đầu</label>
+                    <div class="input-group date" id="datepickerBatDau">
+                        <input class="form-control" placeholder="DD-MM-YYYY" id="datepickerBatDauV"/><span
+                            class="input-group-append input-group-addon"><span class="input-group-text"><i
+                            class="fa fa-calendar"></i></span></span>
+                    </div>
+                    <div class="invalid-taikhoan" id="errorDateBatDau"></div>
+                </div>
+                <div style="float: right; width: 40%; margin: 10px;">
+                    <label>Ngày kết thúc</label>
+                    <div class="input-group date" id="datepickerKetThuc">
+                        <input class="form-control" placeholder="DD-MM-YYYY" id="datepickerKetThucV"/><span
+                            class="input-group-append input-group-addon"><span class="input-group-text"><i
+                            class="fa fa-calendar"></i></span></span>
+                    </div>
+                    <div class="invalid-taikhoan" id="errorDateKetThuc"></div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div style="float: left; width: 40%; margin: 10px;">
+                    <label>Thời gian bắt đầu</label>
+                    <div class="input-group time" id="timepickerBatDau">
+                        <input class="form-control" placeholder="HH:MM:SS" id="timepickerBatDauV"/><span
+                            class="input-group-append input-group-addon"><span class="input-group-text"><i
+                            class="fa fa-clock"></i></span></span>
+                    </div>
+                    <div class="invalid-taikhoan" id="errorTimeBatDau"></div>
+                </div>
+                <div style="float: right; width: 40%; margin: 10px;">
+                    <label>Thời gian kết thúc</label>
+                    <div class="input-group time" id="timepickerKetThuc">
+                        <input class="form-control" placeholder="HH:MM:SS" id="timepickerKetThucV"/><span
+                            class="input-group-append input-group-addon"><span class="input-group-text"><i
+                            class="fa fa-clock"></i></span></span>
+                    </div>
+                    <div class="invalid-taikhoan" id="errorTimeKetThuc"></div>
+                </div>
+            </div>
+            <div class="form-group" style="margin-left: 30%;">
+                <a id="btn_luu_tgdk" href="#" class="btn btn-primary" style="margin: 15px;">
+                    <span class="text">Lưu</span>
+                </a>
+                <a id="btn_huy_tgdk" href="#" class="btn btn-danger" style="margin: 15px;">
+                    <span class="text">Hủy</span>
+                </a>
+            </div>
+            <div class="form-group" style="margin-left: 30%;">
+                <a id="btn_create_tgdk" href="#" class="btn btn-success btn-icon-split" style="margin: 15px;">
+                                        <span class="icon text-white-50">
+                                            <i class="fas fa-plus"></i>
+                                        </span>
+                    <span class="text">Tạo mới thời gian đăng kí</span>
+                </a>
+                <a id="btn_update_tgdk" href="#" class="btn btn-info btn-icon-split" style="margin: 15px;">
+                                        <span class="icon text-white-50">
+                                            <i class="fas fa-edit"></i>
+                                        </span>
+                    <span class="text">Cập nhật thời gian đăng kí</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+

@@ -1,0 +1,13 @@
+INSERT INTO database_qlcn.taikhoan (matk, admin, matkhau, tendn, trangthai) VALUES (1, 'ADMIN', '$2a$10$fSU0lUp2G4Qxn.e35y025.Wn2zgkXRB2AlEIZvU0xGzItaO0auA4i', 'huynk1', 'ACTIVE');
+INSERT INTO database_qlcn.taikhoan (matk, admin, matkhau, tendn, trangthai) VALUES (2, 'SINHVIEN', '$2a$10$fSU0lUp2G4Qxn.e35y025.Wn2zgkXRB2AlEIZvU0xGzItaO0auA4i', 'huynk2', 'ACTIVE');
+INSERT INTO database_qlcn.taikhoan (matk, admin, matkhau, tendn, trangthai) VALUES (3, 'SINHVIEN', 'Wn2zgkXRB2AlEIZvU0xGzItaO0auA4i', 'huynk3', 'ACTIVE');
+INSERT INTO database_qlcn.taikhoan (matk, admin, matkhau, tendn, trangthai) VALUES (4, 'SINHVIEN', 'Wn2zgkXRB2AlEIZvU0xGzItaO0auA4i', 'huynk4', 'ACTIVE');
+INSERT INTO database_qlcn.taikhoan (matk, admin, matkhau, tendn, trangthai) VALUES (5, 'SINHVIEN', 'Wn2zgkXRB2AlEIZvU0xGzItaO0auA4i', 'huynk5', 'ACTIVE');
+INSERT INTO database_qlcn.taikhoan (matk, admin, matkhau, tendn, trangthai) VALUES (6, 'SINHVIEN', 'Wn2zgkXRB2AlEIZvU0xGzItaO0auA4i', 'huynk6', 'ACTIVE');
+INSERT INTO database_qlcn.taikhoan (matk, admin, matkhau, tendn, trangthai) VALUES (7, 'SINHVIEN', 'Wn2zgkXRB2AlEIZvU0xGzItaO0auA4i', 'huynk7', 'ACTIVE');
+INSERT INTO database_qlcn.taikhoan (matk, admin, matkhau, tendn, trangthai) VALUES (8, 'SINHVIEN', 'Wn2zgkXRB2AlEIZvU0xGzItaO0auA4i', 'huynk8', 'ACTIVE');
+INSERT INTO database_qlcn.taikhoan (matk, admin, matkhau, tendn, trangthai) VALUES (9, 'SINHVIEN', 'Wn2zgkXRB2AlEIZvU0xGzItaO0auA4i', 'huynk9', 'ACTIVE');
+INSERT INTO database_qlcn.taikhoan (matk, admin, matkhau, tendn, trangthai) VALUES (10, 'SINHVIEN', 'Wn2zgkXRB2AlEIZvU0xGzItaO0auA4i', 'huynk10', 'ACTIVE');
+INSERT INTO database_qlcn.taikhoan (matk, admin, matkhau, tendn, trangthai) VALUES (11, 'SINHVIEN', 'Wn2zgkXRB2AlEIZvU0xGzItaO0auA4i', 'huynk11', 'ACTIVE');
+INSERT INTO database_qlcn.taikhoan (matk, admin, matkhau, tendn, trangthai) VALUES (12, 'SINHVIEN', 'Wn2zgkXRB2AlEIZvU0xGzItaO0auA4i', 'huynk12', 'ACTIVE');
+INSERT INTO database_qlcn.taikhoan (matk, admin, matkhau, tendn, trangthai) VALUES (13, 'SINHVIEN', 'Wn2zgkXRB2AlEIZvU0xGzItaO0auA4i', 'huynk13', 'ACTIVE');

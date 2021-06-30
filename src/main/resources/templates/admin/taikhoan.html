@@ -1,0 +1,420 @@
+<div th:fragment="content_pages_taikhoan" th:if="${url} == 'taikhoan'" class="container-fluid">
+
+    <!-- Page Heading -->
+    <!--
+        <h1 class="h3 mb-2 text-gray-800">Tables</h1>
+        <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
+            For more information about DataTables, please visit the
+            <a target="_blank" href="https://datatables.net">official DataTables documentation</a>.</p>
+    -->
+
+    <!--Button add entity-->
+    <a id="btn_create" href="#" class="btn btn-success btn-icon-split">
+                                        <span class="icon text-white-50">
+                                            <i class="fas fa-plus"></i>
+                                        </span>
+        <span class="text">Thêm mới tài khoản</span>
+    </a>
+    <!--<span class="context-menu-one btn btn-neutral">right click me</span>-->
+    <div class="my-2"></div>
+
+    <!--Table content-->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Quản lý tài khoản</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                    <tr>
+                        <th th:each="column : ${columns}" th:text="${column}"></th>
+                    </tr>
+                    </thead>
+                    <tfoot>
+                    <tr>
+                        <th th:each="column : ${columns}" th:text="${column}"></th>
+                    </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <style>
+            .invalid-taikhoan {
+                color: #bd2130;
+                margin-right: 15px;
+                display: none;
+            }
+
+            .modal-dialog {
+                max-width: 600px;
+            }
+        </style>
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabelAdd">Thêm mới tài khoản</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group row" style="display: none;">
+                            <label for="inputMatk" class="col-sm-4 col-form-label">Mã tài khoản</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="inputMatk">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="inputTendn" class="col-sm-4 col-form-label">Tên đăng nhập <span
+                                    style="color: #b83c3c;">*</span></label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="inputTendn" placeholder="Tên đăng nhập">
+                                <div class="invalid-taikhoan" id="errorTendn">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="inputMatkhau" class="col-sm-4 col-form-label">Mật khẩu <span
+                                    style="color: #b83c3c;">*</span></label>
+                            <div class="col-sm-8">
+                                <input type="password" class="form-control" id="inputMatkhau" placeholder="Mậu khẩu">
+                                <div class="invalid-taikhoan" id="errorMatkhau">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="inputMatkhauRepeat" class="col-sm-4 col-form-label">Nhập lại mật khẩu <span
+                                    style="color: #b83c3c;">*</span></label>
+                            <div class="col-sm-8">
+                                <input type="password" class="form-control" id="inputMatkhauRepeat"
+                                       placeholder="Nhập lại mật khẩu">
+                                <div class="invalid-taikhoan" id="errorMatkhauRepeat">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row" style="display: none;">
+                            <div class="col-sm-4">Trạng thái</div>
+                            <div class="col-sm-8">
+                                <select class="custom-select" id="selectTrangThai">
+                                    <option value="ACTIVE">Hoạt động</option>
+                                    <option value="INACTIVE">Không hoạt động</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-4">Loại tài khoản</div>
+                            <div class="col-sm-8">
+                                <select class="custom-select" id="selectAdmin">
+                                    <option value="ADMIN">Admin</option>
+                                    <option value="SINHVIEN">Sinh Viên</option>
+                                </select>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Hủy</button>
+                    <a class="btn btn-primary" href="#" id="btn_add_taikhoan">Thêm mới</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--modal form chỉnh sửa-->
+    <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <style>
+            .invalid-taikhoan {
+                color: #bd2130;
+                margin-right: 15px;
+                display: none;
+            }
+
+            .modal-dialog {
+                max-width: 600px;
+            }
+        </style>
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabelEdit">Chỉnh sửa tài khoản</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group row">
+                            <label for="editMatk" class="col-sm-4 col-form-label">Mã tài khoản</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="editMatk" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="editTendn" class="col-sm-4 col-form-label">Tên đăng nhập</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="editTendn" placeholder="Tên đăng nhập"
+                                       readonly>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="editMatkhau" class="col-sm-4 col-form-label">Mật khẩu</label>
+                            <div class="col-sm-8">
+                                <input type="password" class="form-control" id="editMatkhau" placeholder="Mậu khẩu">
+                                <div class="invalid-taikhoan" id="errorEditMatkhau">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="editMatkhauRepeat" class="col-sm-4 col-form-label">Nhập lại mật khẩu</label>
+                            <div class="col-sm-8">
+                                <input type="password" class="form-control" id="editMatkhauRepeat"
+                                       placeholder="Nhập lại mật khẩu">
+                                <div class="invalid-taikhoan" id="errorEditMatkhauRepeat">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-4">Trạng thái</div>
+                            <div class="col-sm-8">
+                                <select class="custom-select" id="selectEditTrangThai" disabled="disabled">
+                                    <option value="ACTIVE">Hoạt động</option>
+                                    <option value="INACTIVE">Không hoạt động</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-4">Loại tài khoản</div>
+                            <div class="col-sm-8">
+                                <select class="custom-select" id="selectEditAdmin" disabled="disabled">
+                                    <option value="ADMIN">Admin</option>
+                                    <option value="SINHVIEN">Sinh Viên</option>
+                                </select>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Hủy</button>
+                    <a class="btn btn-primary" href="#" id="btn_edit_taikhoan">Cập nhật</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--modal form khôi phục trạng thái-->
+    <div class="modal fade" id="restoreModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabelRestore">Bạn có muốn khôi phục trạng thái hoạt
+                        động?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Bạn có muốn khôi phục trạng thái hoạt động của tài khoản <strong
+                        id="tendnRestore" style="color: #e02d1b"></strong> với mã tài khoản là <strong id="matkRestore"
+                                                                                                       style="color: #e02d1b"></strong>.
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Hủy</button>
+                    <a class="btn btn-primary" href="#" id="btn_restore_taikhoan">Khôi phục</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--modal form xóa-->
+    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabelDelete">Bạn có muốn xóa bản ghi?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Bạn có muốn xóa tài khoản <strong id="tendnDelete"
+                                                                          style="color: #e02d1b"></strong> với mã tài
+                    khoản là <strong id="matkDelete" style="color: #e02d1b"></strong>.
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Hủy</button>
+                    <a class="btn btn-primary" href="#" id="btn_delete_taikhoan">Xóa</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Modal nhập thông tin sinh viên-->
+    <div class="modal fade" id="addSVModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <style>
+            .invalid-taikhoan {
+                color: #bd2130;
+                margin-right: 15px;
+                display: none;
+            }
+
+            .modal-dialog {
+                max-width: 600px;
+            }
+        </style>
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabelAddSV">Nhập thông tin sinh viên</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group row">
+                            <label for="inputMaTKSV" class="col-sm-4 col-form-label">Mã tài khoản</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="inputMaTKSV" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="inputMaSV" class="col-sm-4 col-form-label">Mã sinh viên<span
+                                    style="color: #b83c3c;">*</span></label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="inputMaSV" placeholder="Mã sinh viên">
+                                <div class="invalid-taikhoan" id="errorMaSV">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="inputTenSV" class="col-sm-4 col-form-label">Tên sinh viên <span
+                                    style="color: #b83c3c;">*</span></label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="inputTenSV" placeholder="Tên sinh viên">
+                                <div class="invalid-taikhoan" id="errorTenSV">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="inputNienKhoa" class="col-sm-4 col-form-label">Niên khóa</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="inputNienKhoa" placeholder="Niên khóa">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label style="margin-left: 12px;">Ngày sinh<span style="color: #b83c3c;">*</span></label>
+                            <div class="input-group date col-sm-8" style="" id="datepickerNgaySinh">
+                                <input class="form-control" placeholder="DD-MM-YYYY" id="datepickerNgaySinhV" style="margin-left: 108px;"/><span
+                                    class="input-group-append input-group-addon"><span class="input-group-text"><i
+                                    class="fa fa-calendar"></i></span></span>
+                                <div class="invalid-taikhoan" id="errorNgaySinh" style="margin-left: 108px;"></div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-4">Mã lớp</div>
+                            <div class="col-sm-8">
+                                <select class="custom-select" id="selectMaLop">
+                                    <th:block th:each="lop : ${listLop}">
+                                        <option th:value="${lop.maLop}" th:text="${lop.tenLop}"></option>
+                                    </th:block>
+                                </select>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Hủy</button>
+                    <a class="btn btn-primary" href="#" id="btn_addsv_taikhoan">Thêm mới</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Modal hiển thị thông tin chi tiết sinh viên-->
+    <div class="modal fade" id="editSVModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <style>
+            .invalid-taikhoan {
+                color: #bd2130;
+                margin-right: 15px;
+                display: none;
+            }
+
+            .modal-dialog {
+                max-width: 600px;
+            }
+        </style>
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabelEditSV">Thông tin sinh viên</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group row">
+                            <label for="editMaTKSV" class="col-sm-4 col-form-label">Mã tài khoản</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="editMaTKSV" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="editMaSV" class="col-sm-4 col-form-label">Mã sinh viên<span
+                                    style="color: #b83c3c;">*</span></label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="editMaSV" placeholder="Mã sinh viên" readonly>
+                                <div class="invalid-taikhoan" id="errorEditMaSV">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="editTenSV" class="col-sm-4 col-form-label">Tên sinh viên <span
+                                    style="color: #b83c3c;">*</span></label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="editTenSV" placeholder="Tên sinh viên">
+                                <div class="invalid-taikhoan" id="errorEditTenSV">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="editNienKhoa" class="col-sm-4 col-form-label">Niên khóa</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="editNienKhoa" placeholder="Niên khóa">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label style="margin-left: 12px;">Ngày sinh<span style="color: #b83c3c;">*</span></label>
+                            <div class="input-group date col-sm-8" style="" id="datepickerEditNgaySinh">
+                                <input class="form-control" placeholder="DD-MM-YYYY" id="datepickerEditNgaySinhV" style="margin-left: 108px;"/><span
+                                    class="input-group-append input-group-addon"><span class="input-group-text"><i
+                                    class="fa fa-calendar"></i></span></span>
+                                <div class="invalid-taikhoan" id="errorEditNgaySinh" style="margin-left: 108px;"></div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-4">Mã lớp</div>
+                            <div class="col-sm-8">
+                                <select class="custom-select" id="selectEditMaLop">
+                                    <th:block th:each="lop : ${listLop}">
+                                        <option th:value="${lop.maLop}" th:text="${lop.tenLop}"></option>
+                                    </th:block>
+                                </select>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Hủy</button>
+                    <a class="btn btn-primary" href="#" id="btn_editsv_taikhoan">Cập nhật</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+

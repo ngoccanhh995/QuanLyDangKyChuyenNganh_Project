@@ -1,0 +1,124 @@
+<div th:fragment="content_pages_thongtincanhan" th:if="${url} == 'thongtincanhan'" class="container-fluid">
+    <style>
+        .center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+    <div>
+        <form>
+            <div class="form-group row">
+                <label for="maKhoa" class="col-sm-4 col-form-label">Mã khoa</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" id="maKhoa" th:value="${khoa.tenKhoa}" readonly>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="maLop" class="col-sm-4 col-form-label">Mã lớp</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" id="maLop" th:value="${lop.tenLop}" readonly>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="maTK" class="col-sm-4 col-form-label">Mã tài khoản</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" id="maTK" th:value="${authTaiKhoan.maTK}" readonly>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="maSV" class="col-sm-4 col-form-label">Mã sinh viên</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" id="maSV" th:value="${sinhVien.maSV}" readonly>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="tenSV" class="col-sm-4 col-form-label">Tên sinh viên</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" id="tenSV" th:value="${sinhVien.tenSV}" readonly>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="nienKhoa" class="col-sm-4 col-form-label">Niên khóa</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" id="nienKhoa" th:value="${sinhVien.nienKhoa}" readonly>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="ngaysinh" class="col-sm-4 col-form-label">Ngày sinh</label>
+                <div class="input-group date col-sm-8" style="" id="ngaysinh">
+                    <input class="form-control" th:placeholder="${#strings.substring(sinhVien.ngaySinh,8,10) + '-' + #strings.substring(sinhVien.ngaySinh,5,7) + '-' + #strings.substring(sinhVien.ngaySinh,0,4)}" id="ngaySinhV" readonly/><span
+                        class="input-group-append input-group-addon"><span class="input-group-text"><i
+                        class="fa fa-calendar"></i></span></span>
+                </div>
+            </div>
+        </form>
+        <div class="center">
+            <a class="btn btn-primary" href="#" id="btn_update_thongtincanhan">Cập nhật</a>
+        </div>
+    </div>
+
+    <div class="modal fade" id="thongtinsinhvienModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <style>
+            .invalid-taikhoan {
+                color: #bd2130;
+                margin-right: 15px;
+                display: none;
+            }
+
+            .modal-dialog {
+                max-width: 600px;
+            }
+        </style>
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabelEditSV">Thông tin sinh viên</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group row">
+                            <label for="editMaSV" class="col-sm-4 col-form-label">Mã sinh viên</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="editMaSV" th:value="${sinhVien.maSV}" placeholder="Mã sinh viên" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="editTenSV" class="col-sm-4 col-form-label">Tên sinh viên <span
+                                    style="color: #b83c3c;">*</span></label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="editTenSV" placeholder="Tên sinh viên">
+                                <div class="invalid-taikhoan" id="errorEditTenSV">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="editNienKhoa" class="col-sm-4 col-form-label">Niên khóa</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="editNienKhoa" placeholder="Niên khóa">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label style="margin-left: 12px;">Ngày sinh<span style="color: #b83c3c;">*</span></label>
+                            <div class="input-group date col-sm-8" style="" id="editNgaySinh">
+                                <input class="form-control" placeholder="DD-MM-YYYY" id="editNgaySinhV" style="margin-left: 108px;"/><span
+                                    class="input-group-append input-group-addon"><span class="input-group-text"><i
+                                    class="fa fa-calendar"></i></span></span>
+                                <div class="invalid-taikhoan" id="errorEditNgaySinh" style="margin-left: 108px;"></div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Hủy</button>
+                    <a class="btn btn-primary" href="#" id="btn_edit_thongtinsinhvien">Cập nhật</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,197 @@
+<div th:fragment="content_pages_chuyennganh" th:if="${url} == 'chuyennganh'" class="container-fluid">
+
+    <!-- Page Heading -->
+    <!--
+        <h1 class="h3 mb-2 text-gray-800">Tables</h1>
+        <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
+            For more information about DataTables, please visit the
+            <a target="_blank" href="https://datatables.net">official DataTables documentation</a>.</p>
+    -->
+
+    <!--Button add entity-->
+    <a id="btn_create" href="#" class="btn btn-success btn-icon-split">
+                                        <span class="icon text-white-50">
+                                            <i class="fas fa-plus"></i>
+                                        </span>
+        <span class="text">Thêm mới</span>
+    </a>
+    <!--<span class="context-menu-one btn btn-neutral">right click me</span>-->
+    <div class="my-2"></div>
+
+    <!--Table content-->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Quản lý chuyên ngành</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                    <tr>
+                        <th th:each="column : ${columns}" th:text="${column}"></th>
+                    </tr>
+                    </thead>
+                    <tfoot>
+                    <tr>
+                        <th th:each="column : ${columns}" th:text="${column}"></th>
+                    </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!--modal form thêm mới-->
+    <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <style>
+            .invalid-taikhoan {
+                color: #bd2130;
+                margin-right: 15px;
+                display: none;
+            }
+            .modal-dialog {
+                max-width: 600px;
+            }
+        </style>
+        <div class="modal-dialog" role="document" >
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabelAdd">Thêm mới chuyên ngành</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group row"  style="display: none;">
+                            <label for="inputIdCN" class="col-sm-4 col-form-label">ID chuyên ngành</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="inputIdCN">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="inputMacn" class="col-sm-4 col-form-label">Mã chuyên ngành<span style="color: #b83c3c;">*</span></label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="inputMacn" placeholder="Mã chuyên ngành">
+                                <div class="invalid-taikhoan" id="errorMaCN">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="inputChuyennganh" class="col-sm-4 col-form-label">Chuyên ngành <span style="color: #b83c3c;">*</span></label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="inputChuyennganh" placeholder="Chuyên ngành">
+                                <div class="invalid-taikhoan" id="errorChuyennganh">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-4">Khoa</div>
+                            <div class="col-sm-8">
+                                <select class="custom-select" id="selectKhoa">
+                                    <th:block th:each="khoa : ${listKhoa}">
+                                        <option th:value="${khoa.maKhoa}" th:text="${khoa.tenKhoa}"></option>
+                                    </th:block>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="inputMota" class="col-sm-4 col-form-label">Mô tả <span style="color: #b83c3c;">*</span></label>
+                            <div class="col-sm-8">
+                                <textarea class="form-control" id="inputMota" placeholder="Mô tả" rows="3"> </textarea>
+                                <div class="invalid-taikhoan" id="errorMota">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="inputGhichu" class="col-sm-4 col-form-label">Ghi chú</label>
+                            <div class="col-sm-8">
+                                <textarea class="form-control" id="inputGhichu" placeholder="Ghi chú" rows="3"> </textarea>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Hủy</button>
+                    <a class="btn btn-primary" href="#" id="btn_add_chuyennganh">Thêm mới</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--modal form chỉnh sửa-->
+    <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <!--<style>
+            .invalid-taikhoan {
+                color: #bd2130;
+                margin-right: 15px;
+                display: none;
+            }
+            .modal-dialog {
+                max-width: 600px;
+            }
+        </style>-->
+        <div class="modal-dialog" role="document" >
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabelEdit">Chỉnh sửa chuyên ngành</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group row">
+                            <label for="editIdCN" class="col-sm-4 col-form-label">ID chuyên ngành</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="editIdCN" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="editMacn" class="col-sm-4 col-form-label">Mã chuyên ngành</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="editMacn" placeholder="Mã chuyên ngành" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="editChuyennganh" class="col-sm-4 col-form-label">Chuyên ngành</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="editChuyennganh" placeholder="Chuyên ngành" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-4">Khoa</div>
+                            <div class="col-sm-8">
+                                <select class="custom-select" id="editSelectKhoa">
+                                    <th:block th:each="khoa : ${listKhoa}">
+                                        <option th:value="${khoa.maKhoa}" th:text="${khoa.tenKhoa}"></option>
+                                    </th:block>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="editMota" class="col-sm-4 col-form-label">Mô tả</label>
+                            <div class="col-sm-8">
+                                <textarea class="form-control" id="editMota" placeholder="Mô tả" rows="3"> </textarea>
+                                <div class="invalid-taikhoan" id="errorEditMota">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="editGhichu" class="col-sm-4 col-form-label">Ghi chú</label>
+                            <div class="col-sm-8">
+                                <textarea class="form-control" id="editGhichu" placeholder="Ghi chú" rows="3"> </textarea>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Hủy</button>
+                    <a class="btn btn-primary" href="#" id="btn_edit_chuyennganh">Cập nhật</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

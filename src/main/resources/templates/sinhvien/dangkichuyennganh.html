@@ -1,0 +1,73 @@
+<div th:fragment="content_pages_dangkichuyennganh" th:if="${url} == 'dangkichuyennganh'" class="container-fluid">
+
+    <a id="btn_create_dkcn" href="#" class="btn btn-success btn-icon-split">
+        <span class="text">Đăng ký chuyên ngành</span>
+    </a>
+    <a id="btn_update_dkcn" href="#" class="btn btn-primary btn-icon-split">
+        <span class="text">Cập nhật đăng ký chuyên ngành</span>
+    </a>
+    <!--<span class="context-menu-one btn btn-neutral">right click me</span>-->
+    <div class="my-2"></div>
+    <!--Table content-->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Đăng kí chuyên ngành</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                    <tr>
+                        <th th:each="column : ${columns_ttdk}" th:text="${column}"></th>
+                    </tr>
+                    </thead>
+                    <tfoot>
+                    <tr>
+                        <th th:each="column : ${columns_ttdk}" th:text="${column}"></th>
+                    </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="dangkichuyennganhModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document" style="max-width: 750px">
+            <div class="modal-content" style=" width: 1000px;">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabelEditSV">Đăng kí chuyên ngành</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <table class="table table-bordered" id="dataTableModal" width="100%" cellspacing="0">
+                                <thead>
+                                <tr>
+                                    <th th:each="column : ${columns}" th:text="${column}"></th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                                </thead>
+                                <tfoot>
+                                <tr>
+                                    <th th:each="column : ${columns}" th:text="${column}"></th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Hủy</button>
+                    <a class="btn btn-primary" href="#" id="btn_update_table_modal"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>F

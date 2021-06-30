@@ -1,0 +1,10 @@
+INSERT INTO database_qlcn.thongtindangki (mathongtindk, matk, thoigiandk, thutucn) VALUES (1, 2, null, '1/2/3/4/5');
+INSERT INTO database_qlcn.thongtindangki (mathongtindk, matk, thoigiandk, thutucn) VALUES (2, 3, null, '1/2/3/4/5');
+INSERT INTO database_qlcn.thongtindangki (mathongtindk, matk, thoigiandk, thutucn) VALUES (3, 4, null, '1/2/3/4/5');
+INSERT INTO database_qlcn.thongtindangki (mathongtindk, matk, thoigiandk, thutucn) VALUES (4, 5, null, '2/3/3/4/5');
+INSERT INTO database_qlcn.thongtindangki (mathongtindk, matk, thoigiandk, thutucn) VALUES (5, 6, null, '1/2/3/4/5');
+INSERT INTO database_qlcn.thongtindangki (mathongtindk, matk, thoigiandk, thutucn) VALUES (6, 7, null, '3/2/3/4/5');
+INSERT INTO database_qlcn.thongtindangki (mathongtindk, matk, thoigiandk, thutucn) VALUES (7, 8, null, '2/2/3/4/5');
+INSERT INTO database_qlcn.thongtindangki (mathongtindk, matk, thoigiandk, thutucn) VALUES (8, 9, null, '4/2/3/4/5');
+INSERT INTO database_qlcn.thongtindangki (mathongtindk, matk, thoigiandk, thutucn) VALUES (9, 10, null, '5/2/3/4/4');
+INSERT INTO database_qlcn.thongtindangki (mathongtindk, matk, thoigiandk, thutucn) VALUES (10, 11, null, '5 /2/3/4/4');
